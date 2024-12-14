@@ -70,5 +70,25 @@ A robust and efficient **Library Book Management API** built using **Express JS*
 ````bash
 git clone https://github.com/danielpsrb/Library_Book_Management_API
 cd library-book-management
+
+
+### **2. Install Dependencies**
+In this case I use pnpm, you can use other options.
+### Menggunakan `npm`
+```bash
+npm install
 ```
 
+### Menggunakan `yarn`
+```bash
+yarn install
+```
+
+### Menggunakan `pnpm`
+```bash
+pnpm install
+
+
+### ... Menggunakan `bun`
+```bash
+pnpm install
