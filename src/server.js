@@ -19,6 +19,9 @@ app.get('/api/test', (req, res) => {
 const bookController = require('./controller/BookController')
 app.use('/api/v1/books', bookController)
 
+const reviewController = require('./controller/ReviewController')
+app.use('/api/v1/reviews', reviewController)
+
 app.listen(PORT, () => {
     console.log(
         `Server is running and listening on url http://localhost:${PORT}`
