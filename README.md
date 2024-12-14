@@ -64,31 +64,47 @@ A robust and efficient **Library Book Management API** built using **Express JS*
 
 ---
 
-## 🧑‍💻 How to Run Locally
+## How to install and run the project ...
 
-###  **1. Clone or download repository**
-````bash
+### ... as a developer, who wants to work with the project
+1. Clone or download repository ...
+```bash
 git clone https://github.com/danielpsrb/Library_Book_Management_API
-cd library-book-management
+```
 
-
-### **2. Install Dependencies**
-In this case I use pnpm, you can use other options.
-### Menggunakan `npm`
+2. Install Dependencies
 ```bash
 npm install
 ```
 
-### Menggunakan `yarn`
+3. Configure Environment Variables
 ```bash
-yarn install
+DATABASE_URL="mysql://username:password@localhost:3306/namedb"
+PORT=
 ```
 
-### Menggunakan `pnpm`
+
+4. Run Database Migration
+Run Prisma Migration to create the necessary tables in the database.
 ```bash
-pnpm install
+npx prisma migrate dev
+```
 
 
-### ... Menggunakan `bun`
+5. Start the Server on the local
 ```bash
-pnpm install
+npm start
+```
+
+## Technical Requirements (according to project brief)
+
+- Prisma ORM,
+- MySQL,
+- Node JS, usage of package.json
+- Express
+- RESTful architecture
+- usage of at least three middleware modules
+- database: built with MySQL
+- API return books and revieW in JSON
+- no code-errors
+- testing in Postman
