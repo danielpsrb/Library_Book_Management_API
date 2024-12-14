@@ -1,0 +1,24 @@
+{
+  "name": "library_book_management_api",
+  "version": "1.0.0",
+  "description": "tugas project ABS 2024 dari sisi backend bertindak penyedia API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/server.js"
+  },
+  "author": "kelompok_abs_tik3181_a",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "6.0.1",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "multer": "1.4.5-lts.1",
+    "prisma": "^6.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

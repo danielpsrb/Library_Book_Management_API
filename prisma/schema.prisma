@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Books {
+  id                Int      @id @default(autoincrement())
+  isbn              String   @unique @db.VarChar(20)
+  title             String   @db.VarChar(255)
+  author            String   @db.VarChar(255)
+  publish_year      Int      @db.Int
+  publisher         String   @db.VarChar(25)
+  book_pages        Int      @db.Int
+  genre             String   @db.VarChar(255)
+  cover_book_photo  String?  @db.VarChar(255) //field ini bisa diisi atau tidak
+  description       String?  @db.Text         //field ini bisa diisi atau tidak
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relasi ke tabel Review
+  reviews       ReviewBook[]
+}
+
+model ReviewBook {
+  id            Int      @id @default(autoincrement())
+  reviewerName  String   @db.VarChar(255)
+  reviewText    String
+  starRating    Float    // Rating dari 1-5
+  bookId        Int      // Foreign key ke tabel Book
+  date          DateTime @db.DateTime // Tanggal review dibuat
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relasi ke tabel Book
+  book          Books     @relation(fields: [bookId], references: [id]) // Foreign key ke tabel Book
+}
