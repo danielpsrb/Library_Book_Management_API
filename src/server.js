@@ -22,6 +22,9 @@ app.use('/api/v1/books', bookController)
 const reviewController = require('./controller/ReviewController')
 app.use('/api/v1/reviews', reviewController)
 
+//folder file static express
+app.use('/uploads', express.static('uploads'));
+
 app.listen(PORT, () => {
     console.log(
         `Server is running and listening on url http://localhost:${PORT}`

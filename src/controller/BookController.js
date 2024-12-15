@@ -4,7 +4,7 @@
 const express = require("express");
 
 const { getAllBooksData, getBookDataById, addNewBookData, updateBookDataById, deletedBookDataById } = require("../service/BookService");
-const { upload } = require("../helper/filehelper");
+const { upload, generateImageUrl } = require("../helper/filehelper");
 
 const router = express.Router();
 
@@ -34,15 +34,16 @@ router.post('/', upload.single('cover_book_photo'), async (req, res) => {
         const newBookData = req.body;
 
         if (req.file) {
-            newBookData.cover_book_photo = req.file.filename;
+            newBookData.cover_book_photo = generateImageUrl(req, req.file.filename);
         }
 
         const book = await addNewBookData(newBookData);
 
-        res.status(201);
-        res.send({ 
+        res.status(201).json({
+            status: "success",
+            code: 201,
             data: book,
-            message: 'New book has been created'
+            message: "New book has been successfully created.",
         });
     } catch (error) {
         res.status(400).send(error.message);

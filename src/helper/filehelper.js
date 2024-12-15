@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
     }
 });
 
-const fileFilter = (req, file, cb) => {
+const fileFilterAccepted = (req, file, cb) => {
     const allowedMimeTypes = ['.png', '.jpg', '.jpeg'];
     if (allowedMimeTypes.includes(path.extname(file.originalname))) {
         cb(null, true);
@@ -26,10 +26,14 @@ const limitsFile = {
     fileSize: 5 * 1024 * 1024, // Limit file size to 5 MB
 }
 
+const generateImageUrl = (req, filename) => {
+    return `${req.protocol}://${req.get('host')}/uploads/books/${filename}`;
+}
+
 const upload = multer({
     storage: storage,
     limits: limitsFile,
-    fileFilter: fileFilter,
+    fileFilter: fileFilterAccepted,
 });
 
-module.exports = { upload };
+module.exports = { upload, generateImageUrl };
