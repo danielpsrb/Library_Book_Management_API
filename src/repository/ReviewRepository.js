@@ -3,7 +3,7 @@ const prisma = require('../database/prisma');
 const findBooksReviewData = async () => {
     const reviewsData = await prisma.reviewBook.findMany({
         include: {
-            books: true,
+            book: true,
         },
     });
 
@@ -16,7 +16,7 @@ const findBookReviewDataById = async () => {
             id,
         },
         include: {
-            books: true,
+            book: true,
         },
     });
 
