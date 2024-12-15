@@ -56,7 +56,7 @@ router.put('/:id', upload.single('cover_book_photo'), async (req, res) => {
     const bookData = req.body;
 
     if (req.file) {
-        bookData.cover_book_photo = req.file.filename;
+            newBookData.cover_book_photo = generateImageUrl(req, req.file.filename);
     }
 
     if (
