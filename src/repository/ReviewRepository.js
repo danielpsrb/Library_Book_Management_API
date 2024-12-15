@@ -10,7 +10,7 @@ const findBooksReviewData = async () => {
     return reviewsData;
 }
 
-const findBookReviewDataById = async () => {
+const findBookReviewDataById = async (id) => {
     const reviewDataById = await prisma.reviewBook.findUnique({
         where: {
             id,
